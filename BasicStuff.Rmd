@@ -1,0 +1,15 @@
+---
+title: "Misc"
+author: "Alan T. Arnholt"
+date: "May 26, 2015"
+output: html_document
+---
+
+```{r}
+library(PDS)
+boxplot(NESARC$AGE ~ NESARC$SEX)
+library(ggplot2)
+ggplot(data = NESARC, aes(x = SEX, y = AGE)) + 
+  geom_boxplot() + 
+  theme_bw() 
+```
