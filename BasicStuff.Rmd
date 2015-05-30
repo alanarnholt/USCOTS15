@@ -72,3 +72,11 @@ ggplot(data = DS, aes(x = log(num_retweet))) +
 * [http://rstudio.grinnell.edu](http://rstudio.grinnell.edu)
 * [https://r.amherst.edu/apps/nhorton/sat](https://r.amherst.edu/apps/nhorton/sat)
 
+#### Connecting Simulation-Based Inference with Traditional Methods
+
+[http://lock5stat.com/statkey/](http://lock5stat.com/statkey/)
+
+* **Distribution**: Simulation to Theoretical
+* **Statistic**: Original to Standardized
+* **Standard Error**:
+
