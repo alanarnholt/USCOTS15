@@ -13,3 +13,62 @@ ggplot(data = NESARC, aes(x = SEX, y = AGE)) +
   geom_boxplot() + 
   theme_bw() 
 ```
+
+
+### Pick two constructs: Military and Education
+
+
+```{r}
+library(dplyr)
+mydata <- tbl_df(addhealth_public4) %>% 
+  filter(h4mi1 == 1 & h4mi11y < 97) %>% 
+  rename(AID = aid)
+MD <- left_join(mydata, AddHealth)
+dim(mydata)
+summary(mydata$h4mi11y)
+ggplot(data = mydata, aes(x = h4mi11y)) + 
+  geom_bar()
+xtabs(~h4ed2, data = mydata)
+summary(mydata$h4ed2)
+unique(mydata$h4ed2)
+ggplot(data = MD, aes(x = h4ed2)) + 
+  geom_bar() +
+  facet_grid(.~ h4od4)
+```
+
+
+### A Flipped Classroom approach to Introductory Data Science Room
+
+[FlippedLearning.org](FlippedLearning.org)
+
+How do students learn?  Multiple modalitites.  Watch videos and do an assessment at the end.  Weekly quizzes during lab. Students placed in groups. 
+
+* Time on task / practice
+* Making connections
+* Struggle
+
+Model the first class period.  Material to be done before class.  Get students to do the work...students need to do the prep before class.  T/R class quiz on Tuesday.  Use [https://piazza.com/](https://piazza.com/)....Have student find supplemental material they think is interesting (have others comment on) then student gets credit for contribution.  
+
+
+```{r}
+DS <- read.table("./data/USCOTS.txt", sep="\t", quote="\"", col.names = c("user_id", "tweet_id", "data_time", "num_retweet", "tweet_text") )
+summary(DS)
+DS[which.max(DS$num_retweet), ]
+```
+
+```{r}
+sum(DS$num_retweet > 0)/length(DS$num_retweet)
+```
+
+```{r}
+library(ggplot2)
+ggplot(data = DS, aes(x = log(num_retweet))) + 
+  geom_density(fill = "pink") + 
+  theme_bw() 
+```
+
+####
+
+* [http://rstudio.grinnell.edu](http://rstudio.grinnell.edu)
+* [https://r.amherst.edu/apps/nhorton/sat](https://r.amherst.edu/apps/nhorton/sat)
+
